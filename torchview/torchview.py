@@ -257,6 +257,7 @@ def forward_prop(
                 elif isinstance(x, Mapping):
                     _ = model.to(device)(**x, **kwargs)
                 else:
+                    _ = model.to(device)(x, **kwargs)
                     # Should not reach this point, since process_input_data ensures
                     # x is either a list, tuple, or Mapping
                     raise ValueError("Unknown input type")
